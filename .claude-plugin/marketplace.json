@@ -1,0 +1,12 @@
+{
+  "name": "methode-vibe-coding",
+  "owner": { "name": "une-app-par-mois" },
+  "description": "Méthode de vibe coding de la série « Une app par mois ».",
+  "plugins": [
+    {
+      "name": "methode-vibe-coding",
+      "source": "./",
+      "description": "Cadrage, garde-fous, modes de CI et cycle de ticket pour les projets codés par l'IA."
+    }
+  ]
+}
