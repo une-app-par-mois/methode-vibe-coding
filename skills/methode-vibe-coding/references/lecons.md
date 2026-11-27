@@ -40,4 +40,6 @@ App mobile + proxy, vibe codée en 17 jours : ~336 fiches de ticket, ~400 PR, 15
 | `:include .gitignore` dans `.semgrepignore` : Semgrep ignore les négations (`!`), des fichiers suivis (`.claude/hooks/`) n'étaient pas analysés | Écrire la liste d'exclusion à la main ; vérifier la liste des fichiers analysés |
 | `--metrics=off` ne coupait pas l'appel de version de Semgrep | `SEMGREP_ENABLE_VERSION_CHECK=0` en plus |
 | « PR Title » d'upstream échouait à chaque PR : `pull_request_target` lit les workflows de `main`, pas ceux de la branche du jalon | Prévenir le porteur dès la mise en route d'un fork ; désactiver Actions ou attendre la fusion du jalon |
+| `@scarf/scarf` (dépendance de développement) envoyait une télémétrie d'installation à chaque `npm ci` depuis le début du fork, contre la règle « aucune télémétrie » | `ignore-scripts=true` dès le premier ticket ; paquets à script d'installation revus par `nom@version` dans un contrôle bloquant ; fiche d'incident |
+| `ignore-scripts=true` empêche `npm ci` de lancer `prepare` : les hooks Husky ne s'activent plus | Documenter `npm ci && npm run prepare` dans `CLAUDE.md` le jour même |
 
