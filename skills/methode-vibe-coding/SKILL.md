@@ -104,6 +104,17 @@ Les pièges à éviter, vécus sur quiz-lecons, sont dans `references/lecons.md`
 
 Les mots et abréviations de la méthode (ADR, PRD, DoD, CI, jalon, zone sensible…) sont définis dans `references/glossaire.md` ; le modèle en contient la même copie (`docs/GLOSSAIRE-METHODE.md`). Quand le porteur demande ce que signifie un terme, réponds à partir de ce glossaire ; un terme nouveau de la méthode s'y ajoute, dans les deux copies.
 
+### Travail par lot (agents en parallèle, questions en séances)
+
+Pour aller plus vite, les tickets avancent par lots de 2 à 4 :
+
+1. **Séance de lancement** : les tickets du lot sont choisis sans dépendance entre eux et avec peu de fichiers communs. Un sous-agent de pré-analyse (`references/pre-analyse.md`) sort les questions prévisibles de chaque ticket, et le porteur y répond en une fois.
+2. **Développement** : au plus 3 agents de code (`references/codeur.md`) travaillent en parallèle, chacun dans son worktree. Ils ne posent aucune question : une question nouvelle est soit appliquée et mise « en attente du porteur », soit le ticket est mis de côté. Un agent n'écrit que dans la fiche de son ticket ; les fichiers partagés (ETAT, CHANGELOG, journal des décisions, file de questions) ne sont touchés qu'à l'intégration.
+3. **Intégration** : l'IA principale seule lance la revue, le contradicteur et la revue de sécurité. Elle ouvre les PR et les fusionne une par une, en fusionnant la branche du jalon dans les branches restantes.
+4. **Séance de clôture** : le porteur reçoit la file de questions (`docs/QUESTIONS.md`), les décisions à relire et ce qu'il faut vérifier sur le téléphone.
+
+Les cas réservés au porteur attendent la séance suivante, et le ticket concerné n'est pas fusionné avant sa réponse. Seule une action irréversible ou extérieure se pose sur le moment.
+
 ## 5. Préparer une version
 
 1. Dérouler `CHECKLIST-RELEASE.md` dans la PR de version.
