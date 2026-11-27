@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0] — 2026-11-27
+
+- Dépôt existant (§3) : scripts d'installation npm désactivés (`ignore-scripts`, `min-release-age`), inventaire revu par `nom@version`, fiche d'incident si une télémétrie est déjà partie.
+- Leçons de pixel-atelier (ticket 020). Glossaire : « Script d'installation ».
+
 ## [1.2.0] — 2026-11-27
 
 - Dépôt existant (§3) : inventaire complet des manques au premier ticket ; commit de départ Semgrep pour le code hérité ; CodeQL réservé aux dépôts publics (licence) ; workflows d'un fork actifs sur `main` jusqu'au premier jalon.

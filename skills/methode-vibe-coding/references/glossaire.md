@@ -34,6 +34,7 @@ Les mots et abréviations de la méthode de travail (cycle de ticket, CI, garde-
 | PROMPTS.md | Journal des prompts clés : ce que l'IA a fait, ce que le porteur a corrigé. |
 | QCM | Question à choix multiples : forme sous laquelle l'IA vous pose chaque décision, sa recommandation en premier. |
 | Rebase | Réécriture de l'historique d'une branche ; interdite sur une branche déjà envoyée. |
+| Script d'installation | Commande qu'un paquet npm lance à son installation (`preinstall`, `install`, `postinstall`) ; désactivée par `ignore-scripts=true`, car elle s'exécute avant tout contrôle. |
 | Semgrep | Analyse statique qui cherche des failles connues dans le code. |
 | SHA-256 | Empreinte d'un fichier : elle permet de vérifier qu'un téléchargement n'a pas été modifié. |
 | Skill | Ensemble de consignes que Claude Code charge quand une tâche les concerne. |
