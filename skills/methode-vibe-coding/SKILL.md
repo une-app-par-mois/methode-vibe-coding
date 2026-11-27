@@ -25,7 +25,8 @@ Tout échange avec le porteur se fait en français.
   - « contestée » sans argument convaincant : l'IA garde, et la ligne devient « contestée, maintenue : <raison> » ;
   - « à réserver au porteur » (contradiction avec un document validé, décision qui aurait dû être réservée) : la question est posée au porteur.
 
-  La PR liste les décisions contestées en premier. Sur Ki&La, son premier passage a fait changer une décision et en a fait remonter deux au porteur.
+  La PR liste les décisions contestées en premier.
+- **File du porteur** : une question réservée qui ne fait que manquer de recommandation nette, ou qui ajuste une décision du porteur sur un cas limite, ne bloque pas le ticket si elle est facile à défaire (aucune donnée effacée ni réécrite, pas de migration, pas de texte légal ni de déclaration aux stores). L'IA applique son option, la note « en attente du porteur » et pose toute la file en QCM en fin de jalon. Les écarts avec la maquette, la sécurité, les règles absolues, les données, la conformité, les dépendances et l'irréversible restent posés sur le moment. Ni agent de décision ni médiateur : aucun agent ne peut trancher un cas réservé au porteur. Sur Ki&La, son premier passage a fait changer une décision et en a fait remonter deux au porteur.
 
 Motif (porteur, 2026-11-27, Ki&La) : le porteur validait la recommandation dans l'immense majorité des cas. Les contrôles automatiques, la relecture de fin et le journal rattrapent mieux une recommandation fausse qu'une question posée à chaque fois.
 
