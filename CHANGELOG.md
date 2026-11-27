@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.0] — 2026-11-27
+
+- Dépôt existant (§3) : inventaire complet des manques au premier ticket ; commit de départ Semgrep pour le code hérité ; CodeQL réservé aux dépôts publics (licence) ; workflows d'un fork actifs sur `main` jusqu'au premier jalon.
+- Leçons de pixel-atelier (tickets 018 et 019). Glossaire : CodeQL précisé.
+
 ## [1.1.0] — 2026-11-27
 
 - Lieu de la CI et de la release choisis au cadrage : GitHub Actions ou local (`scripts/ci-local.sh`, statut de commit `ci-local` vérifié avant chaque fusion ; `scripts/release-local.sh`, sans attestation de provenance). Modèle `app-template` mis à jour en conséquence.

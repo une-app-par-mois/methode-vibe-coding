@@ -34,4 +34,10 @@ App mobile + proxy, vibe codée en 17 jours : ~336 fiches de ticket, ~400 PR, 15
 | Le `.gitleaks.toml` d'upstream remplaçait les règles par défaut : gitleaks ne détectait plus rien | Le premier ticket **prouve** chaque garde-fou avec un faux secret ; `[extend] useDefault = true` |
 | `npm audit fix` a modifié des dépendances non demandées | Après toute commande npm, comparer le lockfile ; seules les dépendances validées changent |
 | `gh` visait le dépôt d'upstream par défaut (fork) | `gh repo set-default` dès la mise en route ; les scripts lisent le dépôt de `origin` |
+| La préparation n'avait repris que gitleaks : Semgrep, `PROMPTS.md`, `AUDIT.md`, la checklist et la DoD dans le modèle de PR manquaient, découverts par le porteur | Inventaire complet des manques au premier ticket (SKILL.md §3), chaque manque posé en QCM |
+| CodeQL proposé par le modèle, mais interdit par sa licence sur un dépôt privé | Vérifier la licence d'un outil avant de le proposer ; dépôt privé : Semgrep avec les règles du langage |
+| 198 alertes Semgrep dans le code hérité | Commit de départ (`--baseline-commit`) : seules les nouvelles bloquent ; les anciennes listées et auditées dans un ticket |
+| `:include .gitignore` dans `.semgrepignore` : Semgrep ignore les négations (`!`), des fichiers suivis (`.claude/hooks/`) n'étaient pas analysés | Écrire la liste d'exclusion à la main ; vérifier la liste des fichiers analysés |
+| `--metrics=off` ne coupait pas l'appel de version de Semgrep | `SEMGREP_ENABLE_VERSION_CHECK=0` en plus |
+| « PR Title » d'upstream échouait à chaque PR : `pull_request_target` lit les workflows de `main`, pas ceux de la branche du jalon | Prévenir le porteur dès la mise en route d'un fork ; désactiver Actions ou attendre la fusion du jalon |
 

@@ -12,7 +12,7 @@ Les mots et abréviations de la méthode de travail (cycle de ticket, CI, garde-
 | CI | Intégration continue : tests et contrôles lancés sur chaque PR vers `main`, par GitHub Actions ou en local (CI locale). |
 | CI locale | La CI lancée sur le poste par `scripts/ci-local.sh`, sans GitHub Actions, dans une copie propre du dernier commit ; son résultat est déposé en statut de commit. |
 | CLAUDE.md | Fichier de consignes que Claude Code lit au début de chaque session. |
-| CodeQL | Analyse de sécurité du code fournie par GitHub. |
+| CodeQL | Analyse de sécurité du code fournie par GitHub ; gratuite sur un dépôt public seulement (sa licence l'interdit sur un dépôt privé sans offre payante). |
 | Commit | Enregistrement d'un ensemble de modifications dans Git, avec un message. |
 | Dependabot | Service de GitHub qui propose les mises à jour des dépendances et signale leurs failles. |
 | Dépendance | Bibliothèque externe utilisée par l'app. |
