@@ -9,7 +9,8 @@ Les mots et abréviations de la méthode de travail (cycle de ticket, CI, garde-
 | ask / deny | Règles de Claude Code : « ask » demande votre accord avant l'action, « deny » l'interdit toujours. |
 | Attestation de provenance | Preuve signée par GitHub qu'un fichier publié a bien été construit par la CI, depuis ce dépôt. |
 | Branche | Ligne de travail parallèle dans Git ; une par ticket, une par groupe ou par jalon. |
-| CI | Intégration continue : tests et contrôles lancés automatiquement par GitHub Actions sur une PR. |
+| CI | Intégration continue : tests et contrôles lancés sur chaque PR vers `main`, par GitHub Actions ou en local (CI locale). |
+| CI locale | La CI lancée sur le poste par `scripts/ci-local.sh`, sans GitHub Actions, dans une copie propre du dernier commit ; son résultat est déposé en statut de commit. |
 | CLAUDE.md | Fichier de consignes que Claude Code lit au début de chaque session. |
 | CodeQL | Analyse de sécurité du code fournie par GitHub. |
 | Commit | Enregistrement d'un ensemble de modifications dans Git, avec un message. |
@@ -38,6 +39,7 @@ Les mots et abréviations de la méthode de travail (cycle de ticket, CI, garde-
 | Skill | Ensemble de consignes que Claude Code charge quand une tâche les concerne. |
 | Sous-agent | Autre instance de Claude, lancée à part, qui ne connaît que ce qu'on lui donne ; sert à l'audit adverse. |
 | Stack | Ensemble des technologies de l'app : langage, framework, outils. |
+| Statut de commit | Résultat (succès ou échec) attaché à un commit sur GitHub ; la CI locale y dépose `ci-local`, vérifié avant chaque fusion. |
 | Tag | Étiquette posée sur un commit pour marquer une version (`v1.0.0`) ; déclenche la publication. |
 | Ticket | Unité de travail : une intention, une session, moins de 10 fichiers. |
 | Vibe coding | Développement où l'IA écrit tout le code ; l'humain décide, valide et vérifie. |

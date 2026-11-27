@@ -34,7 +34,7 @@ Il couvre :
 
 1. **Le choix du niveau** : léger (app locale, le modèle suffit) ou renforcé (serveur, paiement, mineurs, IA en production, stores).
 2. **La mise en route** d'une nouvelle app depuis le modèle : cadrage par questions, mode de CI, charte et maquettes, stack, hooks, jalons et tickets.
-3. **Les modes de CI** : par jalon (par défaut), par groupe ou par ticket.
+3. **Les modes de CI** : par jalon (par défaut), par groupe ou par ticket ; lieu de la CI et de la release (GitHub Actions ou local).
 4. **Le cycle d'un ticket** : plan validé, test d'abord, revue, PR avec Definition of Done et « non vérifié », fusion selon le mode.
 5. **La préparation d'une version** : checklist, audit adverse par un sous-agent, test hors ligne ou sur appareil, tag et publication vérifiable.
 

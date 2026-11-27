@@ -25,3 +25,13 @@ App mobile + proxy, vibe codée en 17 jours : ~336 fiches de ticket, ~400 PR, 15
 - « Ce qui n'a pas été vérifié » dans chaque PR.
 - Décisions posées au porteur en QCM, avec la recommandation en premier.
 - Boîte à idées séparée du périmètre : l'IA ne code jamais une idée directement.
+
+## Leçons de pixel-atelier (2026-11-27)
+
+| Piège vécu | Parade |
+| --- | --- |
+| La CI d'upstream (3 OS, VS Code, Vercel) coûtait trop cher sur un dépôt privé | Lieu de la CI choisi au cadrage : CI locale (`scripts/ci-local.sh`, statut `ci-local` vérifié avant chaque fusion) ; vérifier les minutes avant de proposer |
+| Le `.gitleaks.toml` d'upstream remplaçait les règles par défaut : gitleaks ne détectait plus rien | Le premier ticket **prouve** chaque garde-fou avec un faux secret ; `[extend] useDefault = true` |
+| `npm audit fix` a modifié des dépendances non demandées | Après toute commande npm, comparer le lockfile ; seules les dépendances validées changent |
+| `gh` visait le dépôt d'upstream par défaut (fork) | `gh repo set-default` dès la mise en route ; les scripts lisent le dépôt de `origin` |
+
