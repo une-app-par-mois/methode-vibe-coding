@@ -7,13 +7,13 @@ Version 1 · 2026-11-11
 > **Version 2 · 2026-11-26 — deux niveaux et corrections tirées du bilan de quiz-lecons**
 >
 > - **Deux niveaux.** *Léger* (app locale, sans serveur, ni paiement, ni donnée sensible) : le modèle [`une-app-par-mois/app-template`](https://github.com/une-app-par-mois/app-template) suffit (cadrage d'une page, glossaire, zones sensibles, `CLAUDE.md`, conventions et DoD, garde-fous). *Renforcé* (serveur, paiement, mineurs, IA générative en production, stores) : ce document, **en partant du même modèle**. Le skill Claude Code `methode-vibe-coding` applique l'un ou l'autre.
-> - **Fusion** : l'IA fusionne quand toute la CI est verte et la branche à jour de `main` (et non plus le porteur seul, §2.5) ; en zone sensible, **après** la relecture du porteur, plus jamais après la fusion.
+> - **Fusion** : l'IA fusionne quand toute la CI est verte (en CI locale : statut `ci-local` vérifié) et la branche à jour de `main` (et non plus le porteur seul, §2.5) ; en zone sensible, **après** la relecture du porteur, plus jamais après la fusion.
 > - **Journal** : `PROGRESS.md` (§10.4) devient `ETAT.md`, l'état courant en 100 lignes au plus, remplacé et non empilé ; l'historique vit dans les PR et `PROMPTS.md` (prompt clé, ce que l'IA a fait, ce que le porteur a corrigé). Un seul fichier d'état : pas de `SUIVI.md` en plus pendant le développement.
-> - **Aucune dérogation permanente** : si une règle est contournée deux fois, on la réécrit. **Mode de CI choisi au cadrage** : par ticket, par groupe (2 à 4 tickets liés) ou par jalon (une seule CI à la fin, mode par défaut). Dans un groupe, chaque ticket est fusionné sans CI après ses tests et `/code-review`, commits gardés ; la CI complète tourne sur la PR du groupe vers `main`. Un ticket en zone sensible reste dans son groupe, relu par le porteur avant sa fusion dans le groupe. Changer de mode est une décision datée.
+> - **Aucune dérogation permanente** : si une règle est contournée deux fois, on la réécrit. **Mode de CI choisi au cadrage** : par ticket, par groupe (2 à 4 tickets liés) ou par jalon (une seule CI à la fin, mode par défaut). Dans un groupe, chaque ticket est fusionné sans CI après ses tests et `/code-review`, commits gardés ; la CI complète tourne sur la PR du groupe vers `main`. Un ticket en zone sensible reste dans son groupe, relu par le porteur avant sa fusion dans le groupe. Changer de mode est une décision datée. **Lieu de la CI et de la release** (GitHub Actions ou local) : choisis au cadrage, voir `SKILL.md`.
 > - **DoD courte** : 6 à 8 critères, le reste est vérifié par la machine.
 > - **Tests sur appareil tôt** : un prétest sur appareil réel à la fin de chaque jalon, pas seulement avant la bêta (quiz-lecons : 84 fiches de correctifs après les prétests).
 > - **Parcours de bout en bout** : en campagne de fin de jalon, pas sur chaque PR.
-> - **Avant chaque version** : audit adverse par une IA qui n'a pas écrit le code (sous-agent ou session séparée), consigné dans `AUDIT.md` ; build sur la CI avec empreintes SHA-256 et attestation de provenance ; `CHECKLIST-RELEASE.md`.
+> - **Avant chaque version** : audit adverse par une IA qui n'a pas écrit le code (sous-agent ou session séparée), consigné dans `AUDIT.md` ; build sur la CI avec empreintes SHA-256 et attestation de provenance (release locale choisie au cadrage : SHA-256 seules, écart assumé et écrit) ; `CHECKLIST-RELEASE.md`.
 > - **Test d'abord** : le test est écrit, lancé et vu en échec avant le code.
 
 ---
@@ -239,7 +239,7 @@ Langues (code, commentaires, documents), **arborescence exacte**, nommage, règl
 ### 9.3 Outillage et garde-fous
 - Chaque outil **vérifié avant d'être proposé** : existence sous ce nom exact, version, maintenance, usage, **compatibilité entre eux**.
 - Les règles des conventions **traduites en règles automatiques** (lint, typage, hooks, CI), avec la liste de ce qui reste à la revue humaine.
-- Hooks avant commit (secrets, branche principale interdite, format du message), CI qui bloque la fusion, audit des dépendances, scripts d'installation désactivés sauf exceptions listées.
+- Hooks avant commit (secrets, branche principale interdite, format du message), CI qui bloque la fusion (sur GitHub Actions, ou CI locale dont le statut est vérifié avant chaque fusion), audit des dépendances, scripts d'installation désactivés sauf exceptions listées.
 - **Permissions de l'IA** dans son outil : refusé (lire les secrets, forcer un envoi, fusionner, accéder aux serveurs, publier), demandé (ajouter une dépendance, dépense), permis (lire, tester, commiter sur une branche de ticket).
 - Les décisions qui coûtent (abonnement de l'hébergeur de code, minutes de CI) sont **vérifiées** puis posées au porteur.
 - Le **premier ticket** installe l'outillage et prouve qu'il bloque ce qu'il doit bloquer.
