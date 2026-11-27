@@ -20,6 +20,12 @@ Tout échange avec le porteur se fait en français.
   - une action irréversible ou extérieure au dépôt ;
   - un choix sans recommandation nette.
 - **Automatiques**, pour tout le reste quand l'IA a une recommandation nette (spécification absente ou ambiguë, texte, affichage, découpage d'un ticket, cas limite, architecture interne) : l'IA applique sa recommandation sans poser la question, continue, et ajoute une ligne à `docs/DECISIONS.md` (date, ticket, question, options, choix, raison, état). Chaque PR les liste dans « Décisions automatiques à relire ». Le porteur en annule une quand il veut ; la correction passe par un ticket. En fin de jalon, l'IA dit combien de décisions automatiques ont été annulées. S'il y en a beaucoup, on resserre la liste des décisions réservées.
+- **Contradicteur** : avant la PR d'un ticket qui a des décisions automatiques, l'IA lance un sous-agent contradicteur, en lecture seule, sans lui donner son raisonnement. Sa définition est dans `references/contradicteur.md`, à copier dans `.claude/agents/contradicteur.md` du projet. Il rend un verdict par décision :
+  - « contestée » avec un argument convaincant : l'IA change, et la ligne devient « changée après contradiction » ;
+  - « contestée » sans argument convaincant : l'IA garde, et la ligne devient « contestée, maintenue : <raison> » ;
+  - « à réserver au porteur » (contradiction avec un document validé, décision qui aurait dû être réservée) : la question est posée au porteur.
+
+  La PR liste les décisions contestées en premier. Sur Ki&La, son premier passage a fait changer une décision et en a fait remonter deux au porteur.
 
 Motif (porteur, 2026-11-27, Ki&La) : le porteur validait la recommandation dans l'immense majorité des cas. Les contrôles automatiques, la relecture de fin et le journal rattrapent mieux une recommandation fausse qu'une question posée à chaque fois.
 

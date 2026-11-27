@@ -2,7 +2,7 @@
 
 ## [1.1.0] — 2026-11-27
 
-- Décisions automatiques : hors des décisions réservées au porteur (cadrage, sécurité, règles absolues, données, dépendance ou dépense, contradiction avec un document, zone sensible, action extérieure, choix sans recommandation nette), l'IA applique sa recommandation sans poser la question et la note dans `docs/DECISIONS.md` ; plan annoncé plutôt qu'attendu ; section « Décisions automatiques à relire » dans les PR ; bilan des décisions annulées en fin de jalon. Terme ajouté au glossaire.
+- Décisions automatiques : hors des décisions réservées au porteur (cadrage, sécurité, règles absolues, données, dépendance ou dépense, contradiction avec un document, zone sensible, action extérieure, choix sans recommandation nette), l'IA applique sa recommandation sans poser la question et la note dans `docs/DECISIONS.md` ; plan annoncé plutôt qu'attendu ; section « Décisions automatiques à relire » dans les PR ; bilan des décisions annulées en fin de jalon. Terme ajouté au glossaire. Contradicteur : sous-agent en lecture seule (`references/contradicteur.md`) lancé avant chaque PR sur ses décisions automatiques.
 
 ## [1.0.0] — 2026-11-26
 
