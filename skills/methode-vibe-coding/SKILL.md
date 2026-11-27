@@ -5,9 +5,23 @@ description: Démarrer ou outiller une app ou un projet 100 % vibe codé (l'IA �
 
 # Méthode de vibe coding
 
-Méthode tirée de deux expériences : le modèle `une-app-par-mois/app-template` (petites apps 100 % locales, publiées en open source) et le projet quiz-lecons (app mobile avec serveur, 17 jours, ~400 PR). Principe : **l'IA écrit le code, les tests et la documentation ; le porteur décide, valide les plans, teste et relit les zones sensibles.** La qualité du code dépend de la qualité de ce que l'IA lit et des contrôles que la machine impose.
+Méthode tirée de deux expériences : le modèle `une-app-par-mois/app-template` (petites apps 100 % locales, publiées en open source) et le projet quiz-lecons (app mobile avec serveur, 17 jours, ~400 PR). Principe : **l'IA écrit le code, les tests et la documentation ; le porteur décide de ce qui lui est réservé, teste, relit les zones sensibles et les décisions automatiques.** La qualité du code dépend de la qualité de ce que l'IA lit et des contrôles que la machine impose.
 
-Tout échange avec le porteur se fait en français. Toute décision lui est posée sous forme de choix (2 à 4 options, recommandation en premier), jamais seulement écrite dans un document.
+Tout échange avec le porteur se fait en français.
+
+**Décisions** (depuis la version 1.1.0) :
+
+- **Réservées au porteur**, toujours posées sous forme de choix (2 à 4 options, recommandation en premier), jamais seulement écrites dans un document :
+  - le cadrage et ses validations (cadrage, PRD, charte et maquettes, documents du niveau renforcé), le niveau, le mode de CI ;
+  - la sécurité, les règles absolues, les données personnelles, la conformité ;
+  - une dépendance nouvelle ou une dépense ;
+  - une contradiction avec un document validé ;
+  - une zone sensible (plan et relecture avant fusion) ;
+  - une action irréversible ou extérieure au dépôt ;
+  - un choix sans recommandation nette.
+- **Automatiques**, pour tout le reste quand l'IA a une recommandation nette (spécification absente ou ambiguë, texte, affichage, découpage d'un ticket, cas limite, architecture interne) : l'IA applique sa recommandation sans poser la question, continue, et ajoute une ligne à `docs/DECISIONS.md` (date, ticket, question, options, choix, raison, état). Chaque PR les liste dans « Décisions automatiques à relire ». Le porteur en annule une quand il veut ; la correction passe par un ticket. En fin de jalon, l'IA dit combien de décisions automatiques ont été annulées. S'il y en a beaucoup, on resserre la liste des décisions réservées.
+
+Motif (porteur, 2026-11-27, Ki&La) : le porteur validait la recommandation dans l'immense majorité des cas. Les contrôles automatiques, la relecture de fin et le journal rattrapent mieux une recommandation fausse qu'une question posée à chaque fois.
 
 ## 1. Choisir le niveau
 
@@ -32,12 +46,13 @@ cd <nom>
 Ensuite, sur une branche `ticket/000-mise-en-route` (jamais sur `main`), suivre la liste « Mise en route » de `ETAT.md` :
 
 1. Supprimer `.github/workflows/modele.yml` et `scripts/tests-modele.sh` : ils ne servent qu'au modèle.
-2. Remplir `docs/CADRAGE.md` **avec le porteur**, par questions courtes : besoin vécu, utilisateur, 3 fonctionnalités `F-01` à `F-03`, hors périmètre, glossaire, tableau des données, zones sensibles, critères de réussite mesurables, risques. Rien n'est inventé : ce que le porteur n'a pas dit devient une question.
-3. **Mode de CI** : le poser au porteur en QCM (section « Mode de CI » ci-dessous), le noter dans le cadrage et dans `CLAUDE.md`.
-4. Charte et maquettes dans `design/`, validées avant le code.
-5. Compléter `CLAUDE.md` (contexte, commandes), `scripts/test.sh`, `scripts/build.sh`, la mise en place de la stack dans `ci.yml` et `release.yml`, le bloc de `dependabot.yml`. Toute dépendance : proposée avec raison, licence et date de dernière mise à jour, après avoir vérifié qu'elle existe sous ce nom exact.
-6. Rappeler au porteur d'activer les hooks (`./scripts/setup-hooks.sh`, gitleaks requis) et de protéger `main` dans les réglages GitHub : ce sont des réglages qu'il fait lui-même.
-7. Découper le travail en jalons (objectif, critère de sortie) et en tickets dans `docs/tickets/` à partir du modèle `000-modele.md`.
+2. Créer `docs/DECISIONS.md` (journal des décisions automatiques, en-tête de tableau seulement) s'il n'existe pas dans le modèle.
+3. Remplir `docs/CADRAGE.md` **avec le porteur**, par questions courtes : besoin vécu, utilisateur, 3 fonctionnalités `F-01` à `F-03`, hors périmètre, glossaire, tableau des données, zones sensibles, critères de réussite mesurables, risques. Rien n'est inventé : ce que le porteur n'a pas dit devient une question.
+4. **Mode de CI** : le poser au porteur en QCM (section « Mode de CI » ci-dessous), le noter dans le cadrage et dans `CLAUDE.md`.
+5. Charte et maquettes dans `design/`, validées avant le code.
+6. Compléter `CLAUDE.md` (contexte, commandes), `scripts/test.sh`, `scripts/build.sh`, la mise en place de la stack dans `ci.yml` et `release.yml`, le bloc de `dependabot.yml`. Toute dépendance : proposée avec raison, licence et date de dernière mise à jour, après avoir vérifié qu'elle existe sous ce nom exact.
+7. Rappeler au porteur d'activer les hooks (`./scripts/setup-hooks.sh`, gitleaks requis) et de protéger `main` dans les réglages GitHub : ce sont des réglages qu'il fait lui-même.
+8. Découper le travail en jalons (objectif, critère de sortie) et en tickets dans `docs/tickets/` à partir du modèle `000-modele.md`.
 
 **Niveau renforcé** : en plus, remplacer la section « 100 % local » de `CLAUDE.md` par les règles absolues du projet, puis produire les documents de `references/preparation-renforcee.md`, chacun validé par le porteur avant le suivant.
 
@@ -70,12 +85,12 @@ Lire le dépôt, puis proposer un plan (QCM) qui ajoute ce qui manque, dans cet 
 
 Le cycle est dans le `CLAUDE.md` du modèle ; ses points essentiels :
 
-- Plan court validé avant tout code, sauf ticket marqué « trivial ».
-- Ticket = une intention, une session, moins de 10 fichiers, découpé **avant**.
+- Plan court annoncé avant tout code, puis le travail commence ; il attend la validation du porteur seulement en zone sensible ou pour une décision réservée (section « Décisions » en tête).
+- Ticket = une intention, une session, moins de 10 fichiers, découpé **avant** (découpage automatique, noté, sauf en zone sensible).
 - Test écrit d'abord et vu en échec ; un bogue corrigé commence par un test qui le reproduit.
 - `/code-review` sur chaque ticket, `/security-review` en zone sensible.
 - Fusion par l'IA selon le mode de CI (section 2) : vers `main` seulement CI toute verte et branche à jour ; en zone sensible, après la relecture du porteur. Jamais `--admin`, aucune branche supprimée.
-- PR avec la DoD cochée et « ce qui n'a pas été vérifié ».
+- PR avec la DoD cochée, « Décisions automatiques à relire » et « ce qui n'a pas été vérifié ».
 - `ETAT.md` remplacé (100 lignes au plus), `PROMPTS.md` complété aux étapes importantes.
 
 Les pièges à éviter, vécus sur quiz-lecons, sont dans `references/lecons.md` : lis-le avant de proposer une exception à une règle.

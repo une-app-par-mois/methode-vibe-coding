@@ -13,6 +13,7 @@ Les mots et abréviations de la méthode de travail (cycle de ticket, CI, garde-
 | CLAUDE.md | Fichier de consignes que Claude Code lit au début de chaque session. |
 | CodeQL | Analyse de sécurité du code fournie par GitHub. |
 | Commit | Enregistrement d'un ensemble de modifications dans Git, avec un message. |
+| Décision automatique | Choix que l'IA fait seule en appliquant sa recommandation nette, hors des décisions réservées au porteur ; noté dans `docs/DECISIONS.md` et relu dans la PR. |
 | Dependabot | Service de GitHub qui propose les mises à jour des dépendances et signale leurs failles. |
 | Dépendance | Bibliothèque externe utilisée par l'app. |
 | DoD | Definition of Done : liste des critères à cocher pour qu'un ticket soit terminé. |
