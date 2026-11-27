@@ -36,10 +36,10 @@ Les mots et abréviations de la méthode de travail (cycle de ticket, CI, garde-
 | Rebase | Réécriture de l'historique d'une branche ; interdite sur une branche déjà envoyée. |
 | Semgrep | Analyse statique qui cherche des failles connues dans le code. |
 | SHA-256 | Empreinte d'un fichier : elle permet de vérifier qu'un téléchargement n'a pas été modifié. |
-| Statut de commit | Résultat (succès ou échec) attaché à un commit sur GitHub ; la CI locale y dépose `ci-local`, vérifié avant chaque fusion. |
 | Skill | Ensemble de consignes que Claude Code charge quand une tâche les concerne. |
 | Sous-agent | Autre instance de Claude, lancée à part, qui ne connaît que ce qu'on lui donne ; sert à l'audit adverse. |
 | Stack | Ensemble des technologies de l'app : langage, framework, outils. |
+| Statut de commit | Résultat (succès ou échec) attaché à un commit sur GitHub ; la CI locale y dépose `ci-local`, vérifié avant chaque fusion. |
 | Tag | Étiquette posée sur un commit pour marquer une version (`v1.0.0`) ; déclenche la publication. |
 | Ticket | Unité de travail : une intention, une session, moins de 10 fichiers. |
 | Vibe coding | Développement où l'IA écrit tout le code ; l'humain décide, valide et vérifie. |
